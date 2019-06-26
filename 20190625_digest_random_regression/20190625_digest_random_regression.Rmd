@@ -1,0 +1,51 @@
+---
+title: "Digest Of Random Regression By LRS"
+subtitle: "Summary and Further Material"
+author: "Peter von Rohr"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_html: default
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: bibliography.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+mrmt <- rmddochelper::MendeleyExportToolR6$new()
+```
+
+# Disclaimer
+The book `r mrmt$add("Schaeffer2016")` is reviewed. The aim is to get a better understanding of the statistical theory behind a random regression analysis. 
+
+# Longitudinal Data
+## Introduction
+Simple examples of longitudinal data are 
+
+* weights of animals taken at different ages and
+* lactation yields of cattle, goats and sheep.
+
+Traits that are measured at various times during the life of an animal are known as __longitudinal__ data. Because weights or lactation yields occur at different ages or times, they are not the same trait^[This is to be contrasted with the case where repeated measures of the same trait are observed. This leads to repeatability models.]. For example weight at birth and weight at weaning may be correlated, but the correlation coefficient is not unity and hence, the traits are not the same. There is a continuum of points in time when a trait can be observed for a given animal. Therefore, these traits have also been called __infinitely dimensional__ traits. 
+
+In general there is a given starting point $t_{min}$ , e.g., birth or parturition at which observations start to be taken. Observations are collected either at a given fixed interval or at random intervals. There is an end point $t_{max}$ beyond which no more observations are made. Each observation $y(t_i)$ has an associated time point $t_i$. For reasons of simplicity time points $t_i$ are assumed to be integer numbers^[Choosing the unit of time accordingly, this assumption does not impose any restricition of generality.]. 
+
+Orthogonal polynomials have been suggested to model the shape of growth curves and lactation curves. The reason for using orthogonal polynomials over ordinary polynomials is that orthogonal polynomials are less correlated. One simple type of orthogonal polynomials are Legendre polynomials. To use Legendre polynomials or other kinds of polynomials, the time values $t_i$^[corresponding to integer numbers] must be rescaled to be between $-1$ and $1$. The scaling formula is 
+
+$$q_i = -1 + 2 \left( \frac{t_i - t_{min}}{t_{max} - t_{min}} \right)$$
+
+where $q_i$ are real valued numbers. Plotting $y_i$ against $t_i$ or $q_i$ results in a curve which is called a __trajectory__. The goal is to find a function that fits the trajectory as closely as possible and to study animal variation around the trajectory between $t_{min}$ and $t_{max}$. This type of study involves covariance functions and random regression model.
+
+Covariance functions help to predict the change in variation from $t_{min}$ to $t_{max}$ for the population. Random regression models provide a way to estimate covariance functions and to determine individual differences in trajectories. 
+
+
+## Collected Data
+
+
